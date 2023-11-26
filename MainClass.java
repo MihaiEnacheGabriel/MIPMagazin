@@ -5,17 +5,16 @@ import javax.swing.*;
 
 public class MainClass {
     public static void main(String[] args) {
-        JFrame fMagazin = new JFrame("Magazin");
-        fMagazin.setLayout(new FlowLayout());
-        fMagazin.setLocation(100, 100);
+        JFrame f = new JFrame("Magazin and Adresa");
+        f.setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
 
+        // Add components for Magazin
         JLabel lblNume = new JLabel("Nume: ");
         JTextArea txtNume = new JTextArea();
+        JButton btnOkMagazin = new JButton("Ok Magazin");
+        JButton btnCancelMagazin = new JButton("Cancel Magazin");
 
-        JButton btnOk = new JButton("Ok");
-        JButton btnCancel = new JButton("Cancel");
-
-        btnOk.addActionListener(e -> {
+        btnOkMagazin.addActionListener(e -> {
             List<Magazin> magazine;
             List<String> welcomeMessages;
             magazine = new ArrayList<Magazin>();
@@ -47,45 +46,30 @@ public class MainClass {
 
         });
 
-        btnCancel.addActionListener(e -> {
-            fMagazin.dispose();
+        btnCancelMagazin.addActionListener(e -> {
+            f.dispose();
         });
 
-        fMagazin.add(lblNume);
-        fMagazin.add(txtNume);
-        fMagazin.add(btnOk);
-        fMagazin.add(btnCancel);
-        fMagazin.pack();
+        f.add(lblNume);
+        f.add(txtNume);
+        f.add(btnOkMagazin);
+        f.add(btnCancelMagazin);
 
-        fMagazin.setLocationRelativeTo(null);
-        fMagazin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fMagazin.setVisible(true);
-///
-        ////
-        ////
-        JFrame fAdresa = new JFrame("Adresa");
-        fAdresa.setLayout(new FlowLayout());
-        fAdresa.setLocation(500, 100);
-
+        // Add components for Adresa
         JLabel lblCodPostal = new JLabel("Cod Postal: ");
-        JTextArea txtCodPostal = new JTextArea(2, 20);
-
+        JTextArea txtCodPostal = new JTextArea(2, 10);
         JLabel lblJudet = new JLabel("Judet: ");
-        JTextArea txtJudet = new JTextArea(2, 20);
-
+        JTextArea txtJudet = new JTextArea(2, 10);
         JLabel lblOras = new JLabel("Oras: ");
-        JTextArea txtOras = new JTextArea(2, 20);
-
+        JTextArea txtOras = new JTextArea(2, 10);
         JLabel lblStrada = new JLabel("Strada: ");
-        JTextArea txtStrada = new JTextArea(2, 20);
-
+        JTextArea txtStrada = new JTextArea(2, 10);
         JLabel lblNrStrada = new JLabel("Numar Strada: ");
-        JTextArea txtNrStrada = new JTextArea(2, 20);
+        JTextArea txtNrStrada = new JTextArea(2, 10);
+        JButton btnOkAdresa = new JButton("Ok Adresa");
+        JButton btnCancelAdresa = new JButton("Cancel Adresa");
 
-        btnOk = new JButton("Ok");
-        btnCancel = new JButton("Cancel");
-
-        btnOk.addActionListener(e -> {
+        btnOkAdresa.addActionListener(e -> {
             Adresa adresa = new Adresa(
                     Integer.parseInt(txtCodPostal.getText()),
                     txtJudet.getText(),
@@ -94,29 +78,30 @@ public class MainClass {
                     Integer.parseInt(txtNrStrada.getText())
             );
 
-             DbUtils.insertAdresa(adresa);
+            DbUtils.insertAdresa(adresa);
         });
 
-        btnCancel.addActionListener(e -> {
-            fAdresa.dispose();
+        btnCancelAdresa.addActionListener(e -> {
+            f.dispose();
         });
 
-        fAdresa.add(lblCodPostal);
-        fAdresa.add(txtCodPostal);
-        fAdresa.add(lblJudet);
-        fAdresa.add(txtJudet);
-        fAdresa.add(lblOras);
-        fAdresa.add(txtOras);
-        fAdresa.add(lblStrada);
-        fAdresa.add(txtStrada);
-        fAdresa.add(lblNrStrada);
-        fAdresa.add(txtNrStrada);
-        fAdresa.add(btnOk);
-        fAdresa.add(btnCancel);
-        fAdresa.pack();
+        f.add(lblCodPostal);
+        f.add(txtCodPostal);
+        f.add(lblJudet);
+        f.add(txtJudet);
+        f.add(lblOras);
+        f.add(txtOras);
+        f.add(lblStrada);
+        f.add(txtStrada);
+        f.add(lblNrStrada);
+        f.add(txtNrStrada);
+        f.add(btnOkAdresa);
+        f.add(btnCancelAdresa);
 
-        fAdresa.setLocationRelativeTo(null);
-        fAdresa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        fAdresa.setVisible(true);
+        // Set up the JFrame
+        f.pack();
+        f.setLocationRelativeTo(null);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setVisible(true);
     }
 }
