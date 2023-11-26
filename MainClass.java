@@ -5,8 +5,9 @@ import javax.swing.*;
 
 public class MainClass {
     public static void main(String[] args) {
-        JFrame f = new JFrame("Magazin");
-        f.setLayout(new FlowLayout());
+        JFrame fMagazin = new JFrame("Magazin");
+        fMagazin.setLayout(new FlowLayout());
+        fMagazin.setLocation(100, 100);
 
         JLabel lblNume = new JLabel("Nume: ");
         JTextArea txtNume = new JTextArea();
@@ -47,18 +48,75 @@ public class MainClass {
         });
 
         btnCancel.addActionListener(e -> {
-            f.dispose();
+            fMagazin.dispose();
         });
 
-        f.add(lblNume);
-        f.add(txtNume);
-        f.add(btnOk);
-        f.add(btnCancel);
-        f.pack();
+        fMagazin.add(lblNume);
+        fMagazin.add(txtNume);
+        fMagazin.add(btnOk);
+        fMagazin.add(btnCancel);
+        fMagazin.pack();
 
-        f.setLocationRelativeTo(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        f.setVisible(true);
+        fMagazin.setLocationRelativeTo(null);
+        fMagazin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fMagazin.setVisible(true);
+///
+        ////
+        ////
+        JFrame fAdresa = new JFrame("Adresa");
+        fAdresa.setLayout(new FlowLayout());
+        fAdresa.setLocation(500, 100);
 
+        JLabel lblCodPostal = new JLabel("Cod Postal: ");
+        JTextArea txtCodPostal = new JTextArea(2, 20);
+
+        JLabel lblJudet = new JLabel("Judet: ");
+        JTextArea txtJudet = new JTextArea(2, 20);
+
+        JLabel lblOras = new JLabel("Oras: ");
+        JTextArea txtOras = new JTextArea(2, 20);
+
+        JLabel lblStrada = new JLabel("Strada: ");
+        JTextArea txtStrada = new JTextArea(2, 20);
+
+        JLabel lblNrStrada = new JLabel("Numar Strada: ");
+        JTextArea txtNrStrada = new JTextArea(2, 20);
+
+        btnOk = new JButton("Ok");
+        btnCancel = new JButton("Cancel");
+
+        btnOk.addActionListener(e -> {
+            Adresa adresa = new Adresa(
+                    Integer.parseInt(txtCodPostal.getText()),
+                    txtJudet.getText(),
+                    txtOras.getText(),
+                    txtStrada.getText(),
+                    Integer.parseInt(txtNrStrada.getText())
+            );
+
+             DbUtils.insertAdresa(adresa);
+        });
+
+        btnCancel.addActionListener(e -> {
+            fAdresa.dispose();
+        });
+
+        fAdresa.add(lblCodPostal);
+        fAdresa.add(txtCodPostal);
+        fAdresa.add(lblJudet);
+        fAdresa.add(txtJudet);
+        fAdresa.add(lblOras);
+        fAdresa.add(txtOras);
+        fAdresa.add(lblStrada);
+        fAdresa.add(txtStrada);
+        fAdresa.add(lblNrStrada);
+        fAdresa.add(txtNrStrada);
+        fAdresa.add(btnOk);
+        fAdresa.add(btnCancel);
+        fAdresa.pack();
+
+        fAdresa.setLocationRelativeTo(null);
+        fAdresa.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        fAdresa.setVisible(true);
     }
 }

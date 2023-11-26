@@ -5,6 +5,14 @@ public class Adresa {
     private String strada;
     private int nr_strada;
 
+    public Adresa(int cod_postal, String judet, String oras, String strada, int nr_strada) {
+        this.cod_postal = cod_postal;
+        this.judet = judet;
+        this.oras = oras;
+        this.strada = strada;
+        this.nr_strada = nr_strada;
+    }
+
     // getters
     public int getCodPostal() {
         return cod_postal;
