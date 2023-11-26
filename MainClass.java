@@ -1,3 +1,6 @@
+import com.sun.source.tree.NewArrayTree;
+
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.*;
@@ -5,6 +8,45 @@ import javax.swing.*;
 
 public class MainClass {
     public static void main(String[] args) {
+        CardLayout cardLayout = new CardLayout();
+        JPanel cardPanel = new JPanel(cardLayout);
+        FrameWindow fw = new FrameWindow("Magazin");
+        MyPanel panel=new MyPanel("Exterior",cardLayout,cardPanel);
+        //fw.add(panel);
+        MyPanel panel1=new MyPanel("Interior",cardLayout,cardPanel);
+        //fw.add(panel1);
+        JPanel groupedPanel = new JPanel(new GridLayout(1,2));
+        groupedPanel.add(panel);
+        groupedPanel.add(panel1);
+        cardPanel.add(groupedPanel,"StartPage");
+        fw.add(cardPanel);
+        fw.setVisible(true);
+
+
+        MyPanel Clienti=new MyPanel("Clienti");
+        MyPanel Adrese=new MyPanel("Adrese");
+        MyPanel Achizitii=new MyPanel("Achizitii");
+        MyPanel Conturi=new MyPanel("Conturi");
+        MyPanel Magazine=new MyPanel("Magazine");
+        MyPanel Angajati=new MyPanel("Angajati");
+        MyPanel Manageri=new MyPanel("Manageri");
+        MyPanel Produse=new MyPanel("Produse");
+        MyPanel Raioane=new MyPanel("Raioane");
+        MyPanel Randuri=new MyPanel("Randuri");
+
+        cardPanel.add(Clienti,"Clienti");
+        cardPanel.add(Adrese,"Adrese");
+        cardPanel.add(Achizitii,"Achizitii");
+        cardPanel.add(Conturi,"Conturi");
+        cardPanel.add(Magazine,"Magazine");
+        cardPanel.add(Angajati,"Angajati");
+        cardPanel.add(Manageri,"Manageri");
+        cardPanel.add(Produse,"Produse");
+        cardPanel.add(Raioane,"Raioane");
+        cardPanel.add(Randuri,"Randuri");
+
+       // System.out.println(cardPanel.getName());
+        /*
         JFrame f = new JFrame("Magazin and Adresa");
         f.setLayout(new BoxLayout(f.getContentPane(), BoxLayout.Y_AXIS));
 
@@ -103,5 +145,6 @@ public class MainClass {
         f.setLocationRelativeTo(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
-    }
-}
+    }*/
+
+    }}
