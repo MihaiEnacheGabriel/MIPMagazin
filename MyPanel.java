@@ -56,6 +56,14 @@ public class MyPanel extends JPanel {
     public void AddTables(String nume,JPanel Panel){
         try {
             conn = DbUtils.getConnection();
+            if(nume=="Randuri")
+                nume="Rand";
+            else if(nume=="Raioane")
+                nume="Raion";
+            else if(nume=="Achizitii")
+                nume="Achizitii";
+            else
+                nume=nume.substring(0,nume.length()-1);
             String sql = "SELECT * from "+ nume;
             if(conn!=null) {
                 stmt = conn.createStatement();
@@ -69,7 +77,6 @@ public class MyPanel extends JPanel {
                 for (int column = 1; column <= columnCount; column++) {
                     columnNames.add(metaData.getColumnName(column));
                 }
-                System.out.println(columnNames);
 
                 // Get data
                 Vector<Vector<Object>> data = new Vector<>();
@@ -80,6 +87,7 @@ public class MyPanel extends JPanel {
                     }
                     data.add(vector);
                 }
+                System.out.println(data);
                 JTable table = new JTable(data, columnNames);
 
                 JScrollPane scrollPane = new JScrollPane(table);
