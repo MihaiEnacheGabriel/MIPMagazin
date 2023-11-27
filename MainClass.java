@@ -10,7 +10,7 @@ public class MainClass {
     public static void main(String[] args) {
         CardLayout cardLayout = new CardLayout();
         JPanel cardPanel = new JPanel(cardLayout);
-        FrameWindow fw = new FrameWindow("Magazin");
+        FrameWindow fw = new FrameWindow("Magazin",cardLayout,cardPanel);
         MyPanel panel=new MyPanel("Exterior",cardLayout,cardPanel);
         //fw.add(panel);
         MyPanel panel1=new MyPanel("Interior",cardLayout,cardPanel);
@@ -18,7 +18,7 @@ public class MainClass {
         JPanel groupedPanel = new JPanel(new GridLayout(1,2));
         groupedPanel.add(panel);
         groupedPanel.add(panel1);
-        cardPanel.add(groupedPanel,"StartPage");
+        cardPanel.add(groupedPanel,"Start");
         fw.add(cardPanel);
         fw.setVisible(true);
 

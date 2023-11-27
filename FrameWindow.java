@@ -7,7 +7,7 @@ import java.awt.event.WindowListener;
 public class FrameWindow extends JFrame {
 
 
-public FrameWindow(String FrameTitle){
+public FrameWindow(String FrameTitle,CardLayout cardLayout,JPanel cardPanel){
     super(FrameTitle);
     //setLayout(new GridLayout(1, 2));
 setSize(1100,500);
@@ -15,24 +15,25 @@ setLocation(100,100);
    // addWindowListener(this);
 
 
-MenuBar AwtMenu=new MenuBar();
-setMenuBar(AwtMenu);
+JMenuBar AwtMenu=new JMenuBar();
+setJMenuBar(AwtMenu);
 
-Menu mnuInsert= new Menu("Insert");
-Menu mnuDelete= new Menu("Delete");
+JMenu mnuInsert= new JMenu("Insert");
+JMenu mnuDelete= new JMenu("Delete");
+JMenu mnuBack=new JMenu("Back");
 AwtMenu.add(mnuDelete);
 AwtMenu.add(mnuInsert);
 
-MenuItem i1=new MenuItem("Magazin");
-MenuItem i2=new MenuItem("Client");
-MenuItem i3=new MenuItem("Cont");
-MenuItem i4=new MenuItem("Adresa");
-
-MenuItem i5=new MenuItem("Magazin");
-MenuItem i6=new MenuItem("Client");
-MenuItem i7=new MenuItem("Cont");
-MenuItem i8=new MenuItem("Adresa");
-MenuItem i9=new MenuItem("Angajati");
+JMenuItem i1=new JMenuItem("Magazin");
+JMenuItem i2=new JMenuItem("Client");
+JMenuItem i3=new JMenuItem("Cont");
+JMenuItem i4=new JMenuItem("Adresa");
+JMenuItem back=new JMenuItem("Back");
+JMenuItem i5=new JMenuItem("Magazin");
+JMenuItem i6=new JMenuItem("Client");
+JMenuItem i7=new JMenuItem("Cont");
+JMenuItem i8=new JMenuItem("Adresa");
+JMenuItem i9=new JMenuItem("Angajati");
 mnuInsert.add(i1);
 mnuInsert.add(i2);
 mnuInsert.add(i3);
@@ -43,8 +44,13 @@ mnuDelete.add(i7);
 mnuDelete.add(i8);
 mnuDelete.add(i9);
 
-
-
+    back.addActionListener(new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            // Your action here
+            cardLayout.show(cardPanel, "Start");
+        }   });
+mnuBack.add(back);
 setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    AwtMenu.add(mnuBack);
 }
 }

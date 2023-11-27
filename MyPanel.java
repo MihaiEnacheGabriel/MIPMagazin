@@ -62,6 +62,8 @@ public class MyPanel extends JPanel {
                 nume="Raion";
             else if(nume=="Achizitii")
                 nume="Achizitii";
+            else if(nume=="Conturi")
+                nume="Cont";
             else
                 nume=nume.substring(0,nume.length()-1);
             String sql = "SELECT * from "+ nume;
@@ -87,7 +89,6 @@ public class MyPanel extends JPanel {
                     }
                     data.add(vector);
                 }
-                System.out.println(data);
                 JTable table = new JTable(data, columnNames);
 
                 JScrollPane scrollPane = new JScrollPane(table);
@@ -99,7 +100,6 @@ public class MyPanel extends JPanel {
                 stmt.close();
                 conn.close();
             }
-
         }
         catch(Exception ex){};
     }
